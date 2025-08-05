@@ -1,0 +1,123 @@
+<div class="dialog-header">
+  <h2 class="dialog-title">{{isEditing ? 'Edit' : 'Add'}} Matrix Item</h2>
+  <button type="button" class="dialog-close" (click)="onCancel()" aria-label="Close">&times;</button>
+</div>
+
+<form [formGroup]="matrixForm" (ngSubmit)="onSubmit()">
+  <div class="dialog-content dialog-content-edit">
+    <div class="form-fields">
+      <div class="form-group">
+        <label for="module">Module</label>
+        <div class="custom-dropdown-wrapper" #moduleDropdownContainer>
+          <div class="dropdown-header" (click)="toggleModuleDropdown($event)"
+               [class.invalid]="matrixForm.get('module')?.invalid && matrixForm.get('module')?.touched">
+            <span class="dropdown-text">{{ matrixForm.get('module')?.value || 'Select a module' }}</span>
+            <span class="dropdown-icon">
+              <span class="material-symbols-outlined">
+                {{ isModuleDropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+              </span>
+            </span>
+          </div>
+          <div class="dropdown-menu" *ngIf="isModuleDropdownOpen">
+            <div class="dropdown-item" *ngFor="let module of moduleOptions" 
+                 (click)="selectModule(module)"
+                 [class.active]="matrixForm.get('module')?.value === module">
+              {{ module }}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="matrixForm.get('module')?.invalid && matrixForm.get('module')?.touched" class="error-message">
+          <span *ngIf="matrixForm.get('module')?.hasError('required')">Module name is required</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="subModule">Sub Module</label>
+        <div class="custom-dropdown-wrapper" #subModuleDropdownContainer>
+          <div class="dropdown-header" (click)="toggleSubModuleDropdown($event)"
+               [class.invalid]="matrixForm.get('subModule')?.invalid && matrixForm.get('subModule')?.touched">
+            <span class="dropdown-text">{{ matrixForm.get('subModule')?.value || 'Select a sub module' }}</span>
+            <span class="dropdown-icon">
+              <span class="material-symbols-outlined">
+                {{ isSubModuleDropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+              </span>
+            </span>
+          </div>
+          <div class="dropdown-menu" *ngIf="isSubModuleDropdownOpen">
+            <div class="dropdown-item" *ngFor="let subModule of filteredSubModuleOptions" 
+                 (click)="selectSubModule(subModule)"
+                 [class.active]="matrixForm.get('subModule')?.value === subModule">
+              {{ subModule }}
+            </div>
+          </div>
+        </div>
+        <div *ngIf="matrixForm.get('subModule')?.invalid && matrixForm.get('subModule')?.touched" class="error-message">
+          <span *ngIf="matrixForm.get('subModule')?.hasError('required')">Sub module is required</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="functionality">Functionality</label>
+        <input 
+          id="functionality"
+          type="text" 
+          formControlName="functionality" 
+          placeholder="Enter functionality"
+          [class.invalid]="matrixForm.get('functionality')?.invalid && matrixForm.get('functionality')?.touched">
+        <div *ngIf="matrixForm.get('functionality')?.invalid && matrixForm.get('functionality')?.touched" class="error-message">
+          <span *ngIf="matrixForm.get('functionality')?.hasError('required')">Functionality is required</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dependencyModule">Dependency Module</label>
+        <input 
+          id="dependencyModule"
+          type="text" 
+          formControlName="dependencyModule" 
+          placeholder="Enter dependency module"
+          [class.invalid]="matrixForm.get('dependencyModule')?.invalid && matrixForm.get('dependencyModule')?.touched">
+        <div *ngIf="matrixForm.get('dependencyModule')?.invalid && matrixForm.get('dependencyModule')?.touched" class="error-message">
+          <span *ngIf="matrixForm.get('dependencyModule')?.hasError('required')">Dependency module is required</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dependantFunctionality">Dependant Functionality</label>
+        <input 
+          id="dependantFunctionality"
+          type="text" 
+          formControlName="dependantFunctionality" 
+          placeholder="Enter dependant functionality"
+          [class.invalid]="matrixForm.get('dependantFunctionality')?.invalid && matrixForm.get('dependantFunctionality')?.touched">
+        <div *ngIf="matrixForm.get('dependantFunctionality')?.invalid && matrixForm.get('dependantFunctionality')?.touched" class="error-message">
+          <span *ngIf="matrixForm.get('dependantFunctionality')?.hasError('required')">Dependant functionality is required</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="api">API</label>
+        <input 
+          id="api"
+          type="text" 
+          formControlName="api" 
+          placeholder="Enter API path"
+          [class.invalid]="matrixForm.get('api')?.invalid && matrixForm.get('api')?.touched">
+        <div *ngIf="matrixForm.get('api')?.invalid && matrixForm.get('api')?.touched" class="error-message">
+          <span *ngIf="matrixForm.get('api')?.hasError('required')">API path is required</span>
+          <span *ngIf="matrixForm.get('api')?.hasError('apiAlreadyExists')">This API path already exists. API paths must be unique.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialog-footer">
+    <button type="button" class="btn btn-text" (click)="onCancel()">Cancel</button>
+    <button 
+      type="submit" 
+      class="btn btn-primary" 
+      [disabled]="matrixForm.invalid || matrixForm.pending">
+      {{isEditing ? 'Update' : 'Add'}}
+    </button>
+  </div>
+</form>

@@ -1,0 +1,79 @@
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 20px 8px;
+
+  h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+  }
+}
+
+.dialog-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #757575;
+  
+  &:hover {
+    color: #000;
+  }
+}
+
+.dialog-content {
+  min-width: 300px;
+  padding: 24px;
+}
+
+p {
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 300;
+  text-align: center;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 9px 20px 8px;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 0;
+  gap: 8px;
+
+  button {
+    min-width: 80px;
+    padding: 8px 16px;
+  }
+}
+
+.btn {
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-text {
+  background: transparent;
+  color: #757575;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.btn-danger {
+  background-color: #f44336;
+  color: white;
+  
+  &:hover {
+    background-color: #d32f2f;
+  }
+}

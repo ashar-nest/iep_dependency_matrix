@@ -1,0 +1,316 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../src/assets/fonts/icomoon.eot?pzfnv0');
+  src:  url('../src/assets/fonts/icomoon.eot?pzfnv0#iefix') format('embedded-opentype'),
+    url('../src/assets/fonts/icomoon.ttf?pzfnv0') format('truetype'),
+    url('../src/assets/fonts/icomoon.woff?pzfnv0') format('woff'),
+    url('../src/assets/fonts/icomoon.svg?pzfnv0#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-microsoftexcel:before {
+  content: "\e900";
+  color: #147d64 !important;
+  font-size: 17px;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+}
+
+/* Custom Dialog Styles */
+.dialog-container {
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dialog-overlay {
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-wrapper {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 11px 15px -7px rgba(0, 0, 0, 0.2),
+              0 24px 38px 3px rgba(0, 0, 0, 0.14),
+              0 9px 46px 8px rgba(0, 0, 0, 0.12);
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  animation: dialogFadeIn 0.2s ease-out forwards;
+}
+
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Dialog Header */
+.dialog-header {
+  padding: 9px 20px 8px 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialog-title {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.dialog-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  padding: 0;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog-close:hover {
+  color: #333;
+}
+
+/* Dialog Content */
+.dialog-content {
+  padding: 10px 20px 5px 20px !important;
+  max-height: 60vh;
+  overflow-y: auto;
+  label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: #333;
+    font-size: 14px;
+  }
+  scrollbar-gutter: stable;
+
+
+// Modern scrollbar styling (WebKit - Chrome, Safari, Edge)
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+  
+  // Firefox scrollbar styling
+  scrollbar-width: thin;
+  scrollbar-color: #eee transparent;
+}
+.dialog-content-edit {
+  padding: 15px 10px 5px 20px !important;
+}
+.dialog-content-delete {
+  padding: 20px 20px 20px 20px !important;
+}
+/* Dialog Footer */
+.dialog-footer {
+  padding: 13px 20px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 100;
+  color: #333;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 13px;
+  box-sizing: border-box;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #147d64;
+  box-shadow: 0 0 0 2px rgba(20, 125, 100, 0.1);
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 15px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+  text-decoration: none;
+  border: 1px solid transparent;
+  gap: 8px;
+}
+
+.btn-primary {
+  background-color: #147d64;
+  color: white;
+  border-color: #147d64;
+}
+
+.btn-primary:hover {
+  background-color: #0c6b55;
+  border-color: #0c6b55;
+}
+
+.btn-primary:disabled {
+  background-color: #88c5b7;
+  border-color: #88c5b7;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #147d64;
+  border-color: #147d64;
+}
+
+.btn-secondary:hover {
+  background-color: #f0f9f7;
+}
+
+.btn-danger {
+  background-color: #d32f2f;
+  color: white;
+  border-color: #d32f2f;
+}
+
+.btn-danger:hover {
+  background-color: #b71c1c;
+  border-color: #b71c1c;
+}
+
+.btn-text {
+  background-color: transparent;
+  color: #666;
+  border: none;
+}
+
+.btn-text:hover {
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+/* Table styles */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.material-symbols-outlined{
+  font-size: 18px;
+}
+
+.dialog-wrapper{
+  //width: 90% !important;
+  //overflow: hidden;
+}
+.form-fields{
+  min-width: 100px !important;
+}
+
+.summarize-dialog-container{
+  .dialog-header{
+    background-color: white !important;
+    padding: 8px 20px !important;
+    h2{
+      margin: 0;
+      font-size: 16px !important;
+      font-weight: 500;
+      color: #333;
+    }
+  }
+  .dialog-content{
+    max-height: 78vh !important;
+  }
+}
+

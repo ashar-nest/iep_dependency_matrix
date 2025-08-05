@@ -1,0 +1,9 @@
+<div class="summarize-dialog-container">
+  <div class="dialog-header">
+    <h2>{{title}}</h2>
+    <button class="close-button" (click)="closeDialog()">×</button>
+  </div>
+  <div class="dialog-content">
+    <app-summary-viewer [summaryPath]="summaryPath"></app-summary-viewer>
+  </div>
+</div>

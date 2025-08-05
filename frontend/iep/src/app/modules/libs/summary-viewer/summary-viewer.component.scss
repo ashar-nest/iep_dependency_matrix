@@ -1,0 +1,762 @@
+.summary-container {
+  width: 100%;
+  height: 100%;
+}
+
+// Comment indicators
+a.comment-indicator {
+  background: red;
+  display: inline-block;
+  border: 1px solid black;
+  width: 0.5em;
+  height: 0.5em;
+
+  &:hover + div.comment {
+    background: #ffd;
+    position: absolute;
+    display: block;
+    border: 1px solid black;
+    padding: 0.5em;
+  }
+}
+
+div.comment {
+  display: none;
+}
+
+// Table styles
+table {
+  border-collapse: collapse;
+  page-break-after: always;
+
+  &.sheet0 {
+    // Column widths
+    col.col0 { width: 43.37777728pt; }
+    col.col1 { width: 106.41110989pt; }
+    col.col2 { width: 130.81110961pt; }
+    col.col3 { width: 107.08888766pt; }
+    col.col4 { width: 71.16666585pt; }
+    col.col5 { width: 66.42222146pt; }
+    col.col6 { width: 77.94444355pt; }
+    col.col7 { width: 83.36666571pt; }
+    col.col8 { width: 62.35555484pt; }
+    col.col9 { width: 54.89999937pt; }
+    col.col10 { width: 24.39999972pt; }
+    col.col11 { width: 27.78888857pt; }
+    col.col12 { width: 43.37777728pt; }
+    col.col13 { width: 73.87777693pt; }
+    col.col14 { width: 73.87777693pt; }
+    col.col15 { width: 29.14444411pt; }
+    col.col16 { width: 43.37777728pt; }
+    col.col17 { width: 39.98888843pt; }
+    col.col18 { width: 45.41111059pt; }
+    col.col19 { width: 39.98888843pt; }
+    col.col20 { width: 39.98888843pt; }
+    col.col21 { width: 39.98888843pt; }
+    col.col22 { width: 39.98888843pt; }
+    col.col23 { width: 39.98888843pt; }
+    col.col24 { width: 39.98888843pt; }
+    col.col25 { width: 39.98888843pt; }
+    col.col26 { width: 39.98888843pt; }
+    col.col27 { width: 39.98888843pt; }
+    col.col28 { width: 63.71111038pt; }
+    col.col29 { width: 70.48888808pt; }
+    col.col30 { width: 83.36666571pt; }
+    col.col31 { width: 83.36666571pt; }
+    col.col32 { width: 45.41111059pt; }
+    col.col33 { width: 121.32222083pt; }
+    col.col34 { width: 47.4444439pt; }
+    col.col35 { width: 56.93333268pt; }
+    col.col36 { width: 43.37777728pt; }
+    col.col37 { width: 76.58888801pt; }
+    col.col38 { width: 43.37777728pt; }
+    col.col39 { width: 82.68888794pt; }
+    col.col40 { width: 43.37777728pt; }
+    col.col41 { width: 59.64444376pt; }
+    col.col42 { width: 51.51111052pt; }
+    col.col43 { width: 90.14444341pt; }
+    col.col44 { width: 82.68888794pt; }
+    col.col45 { width: 65.74444369pt; }
+    col.col46 { width: 65.74444369pt; }
+    col.col47 { width: 65.74444369pt; }
+    col.col48 { width: 73.19999916pt; }
+    col.col49 { width: 90.82222118pt; }
+    col.col50 { width: 43.37777728pt; }
+
+    // Row heights
+    tr {
+      height: 15pt;
+
+      &.row0 { height: 26pt; }
+      &.row2 { height: 16.5pt; }
+      &.row5 { height: 16.5pt; }
+      &.row6 { height: 16.5pt; }
+      &.row7 { height: 16.5pt; }
+      &.row8 { height: 16.5pt; }
+      &.row9 { height: 16.5pt; }
+      &.row10 { height: 16.5pt; }
+      &.row11 { height: 16.5pt; }
+      &.row12 { height: 16.5pt; }
+      &.row13 { height: 16.5pt; }
+      &.row14 { height: 16.5pt; }
+      &.row15 { height: 16.5pt; }
+      &.row16 { height: 16.5pt; }
+      &.row17 { height: 16.5pt; }
+      &.row18 { height: 16.5pt; }
+      &.row19 { height: 16.5pt; }
+      &.row20 { height: 16.5pt; }
+      &.row21 { height: 16.5pt; }
+      &.row22 { height: 16.5pt; }
+      &.row23 { height: 16.5pt; }
+      &.row24 { height: 16.5pt; }
+      &.row25 { height: 16.5pt; }
+      &.row26 { height: 16.5pt; }
+      &.row27 { height: 16.5pt; }
+      &.row28 { height: 16.5pt; }
+      &.row29 { height: 16.5pt; }
+      &.row30 { height: 16.5pt; }
+      &.row31 { height: 16.5pt; }
+      &.row32 { height: 16.5pt; }
+      &.row33 { height: 16.5pt; }
+      &.row34 { height: 16.5pt; }
+      &.row35 { height: 16.5pt; }
+      &.row36 { height: 16.5pt; }
+      &.row37 { height: 16.5pt; }
+      &.row38 { height: 16.5pt; }
+      &.row39 { height: 16.5pt; }
+      &.row40 { height: 16.5pt; }
+      &.row41 { height: 16.5pt; }
+      &.row42 { height: 16.5pt; }
+      &.row43 { height: 16.5pt; }
+      &.row44 { height: 16.5pt; }
+      &.row45 { height: 16.5pt; }
+      &.row46 { height: 16.5pt; }
+      &.row47 { height: 16.5pt; }
+      &.row48 { height: 16.5pt; }
+      &.row49 { height: 16.5pt; }
+      &.row50 { height: 16.5pt; }
+      &.row51 { height: 16.5pt; }
+      &.row52 { height: 16.5pt; }
+      &.row53 { height: 16.5pt; }
+      &.row54 { height: 24.75pt; }
+      &.row55 { height: 16.5pt; }
+      &.row56 { height: 16.5pt; }
+      &.row57 { height: 16.5pt; }
+      &.row58 { height: 16.5pt; }
+      &.row59 { height: 16.5pt; }
+      &.row60 { height: 16.5pt; }
+      &.row61 { height: 16.5pt; }
+      &.row62 { height: 16.5pt; }
+      &.row63 { height: 16.5pt; }
+      &.row64 { height: 16.5pt; }
+    }
+  }
+}
+
+// Gridlines
+.gridlines {
+  td { border: 1px dotted black; }
+  th { border: 1px dotted black; }
+}
+
+// Border and background utilities
+.brd_none td { border: none !important; }
+.green_bg { background-color: #0d5141; border: 1px solid black; }
+
+// Text alignment utilities
+.b { text-align: center; }
+.e { text-align: center; }
+.f { text-align: right; }
+.inlineStr { text-align: left; }
+.n { text-align: right; }
+.s { text-align: left; }
+
+// Global table cell styling
+th { padding: 15px; }
+td { padding: 15px; }
+
+// Common style mixins and variables
+$roboto-font: "Roboto", sans-serif;
+$segoe-font: "Segoe UI Symbol";
+$border-black: 1px solid #000000;
+
+// Base styles
+%base-style {
+  font-family: $roboto-font;
+  font-size: 11pt;
+  color: #000000;
+}
+
+%base-style-20pt {
+  font-family: $roboto-font;
+  font-size: 20pt;
+  color: #000000;
+}
+
+%base-borders {
+  border-top: $border-black !important;
+  border-bottom: $border-black !important;
+  border-left: $border-black !important;
+  border-right: $border-black !important;
+}
+
+// TD and TH styles
+td, th {
+  &.style0 {
+    @extend %base-style;
+    vertical-align: bottom;
+    border: none #000000;
+    background-color: white;
+  }
+
+  &.style1 {
+    @extend %base-style;
+    vertical-align: bottom;
+    border: none #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.style2 {
+    @extend %base-style-20pt;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: none #000000;
+    background-color: #0d5141;
+  }
+
+  &.style3 {
+    @extend %base-style-20pt;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: none #000000;
+    border-left: none #000000;
+    border-right: none #000000;
+    background-color: #0d5141;
+    font-weight: 500;
+    color: white;
+  }
+
+  &.style4 {
+    @extend %base-style-20pt;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: none #000000;
+    border-left: none #000000;
+    border-right: none #000000;
+    background-color: #0d5141;
+  }
+
+  &.style5 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: none #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.style6 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: none #000000;
+    font-weight: 500;
+    background-color: #FFFFFF;
+  }
+
+  &.style7 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: 500;
+    background-color: #FFFFFF;
+  }
+
+  &.style8 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: 500;
+    background-color: #D0DFE5;
+  }
+
+  &.style9 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    font-weight: 500;
+    background-color: #D0DFE5;
+  }
+
+  &.style10 {
+    @extend %base-style;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: $border-black !important;
+    border-left: $border-black !important;
+    border-right: none #000000;
+    background-color: #D0DFE5;
+  }
+
+  &.style11 {
+    @extend %base-style;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: $border-black !important;
+    border-left: none #000000;
+    border-right: none #000000;
+    background-color: #D0DFE5;
+  }
+
+  &.style12 {
+    @extend %base-style;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: $border-black !important;
+    border-left: none #000000;
+    border-right: $border-black !important;
+    background-color: #D0DFE5;
+  }
+
+  &.style13 {
+    @extend %base-style;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: $border-black !important;
+    border-left: none #000000;
+    border-right: $border-black !important;
+    background-color: #D0DFE5;
+  }
+
+  &.style14 {
+    @extend %base-style;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: $border-black !important;
+    border-left: $border-black !important;
+    border-right: none #000000;
+    font-weight: 500;
+    background-color: #D0DFE5;
+  }
+
+  &.style15 {
+    @extend %base-style;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: $border-black !important;
+    border-left: none #000000;
+    border-right: $border-black !important;
+    font-weight: 500;
+    background-color: #D0DFE5;
+  }
+
+  &.style16 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    background-color: #FFFFFF;
+  }
+
+  &.style17 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: none #000000;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    background-color: #FFFFFF;
+  }
+
+  &.style18 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: none #000000;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    font-weight: 500;
+    background-color: #FFFFFF;
+  }
+
+  &.style19 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    background-color: #FFFFFF;
+  }
+
+  &.style20 {
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    font-family: $segoe-font;
+    font-size: 11pt;
+    color: #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.style21 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    background-color: #FFC000;
+  }
+
+  &.style22 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    background-color: #6EC4E5;
+  }
+
+  &.style23 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    background-color: #9ED8EE;
+  }
+
+  &.style24 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    background-color: #FFFFFF;
+  }
+
+  &.style25 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    font-weight: 500;
+    background-color: #FFFFFF;
+  }
+
+  &.style26 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #D0DFE5;
+  }
+
+  &.style27 {
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    font-family: $segoe-font;
+    font-size: 11pt;
+    color: #000000;
+    background-color: #00B050;
+  }
+
+  &.style28 {
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    font-family: $segoe-font;
+    font-size: 11pt;
+    color: #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.style29 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border: none #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.style30 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #00B050;
+  }
+
+  &.style31 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    background-color: #FFC000;
+  }
+
+  &.style32 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    text-decoration: line-through;
+    background-color: #FFFFFF;
+  }
+
+  &.style33 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-decoration: line-through;
+    background-color: #FFFF00;
+  }
+
+  &.style34 {
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: line-through;
+    font-family: $segoe-font;
+    font-size: 11pt;
+    color: #000000;
+    background-color: #00B050;
+  }
+
+  &.style35 {
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: line-through;
+    font-family: $segoe-font;
+    font-size: 11pt;
+    color: #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.style36 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border: none #000000;
+    text-decoration: line-through;
+    background-color: #FFFFFF;
+  }
+
+  &.style37 {
+    @extend %base-style;
+    vertical-align: bottom;
+    border: none #000000;
+    text-decoration: line-through;
+    background-color: #FFFFFF;
+  }
+
+  &.style38 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #FFFFFF;
+  }
+
+  &.style39 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: none #000000;
+    border-top: $border-black !important;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    background-color: #D0DFE5;
+  }
+
+  &.style40 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: none #000000;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    background-color: #D0DFE5;
+  }
+
+  &.style41 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    background-color: #FFFF00;
+  }
+
+  &.style42 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    background-color: #D0DFE5;
+  }
+
+  &.style43 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: line-through;
+    background-color: #00B050;
+  }
+
+  &.style44 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: line-through;
+    background-color: #FFFFFF;
+  }
+
+  &.style45 {
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: center;
+    text-decoration: line-through;
+    font-family: $segoe-font;
+    font-size: 11pt;
+    color: #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.style46 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: none #000000;
+    border-top: $border-black !important;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    background-color: #FFC000;
+  }
+
+  &.style47 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: none #000000;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    background-color: #FFC000;
+  }
+
+  &.style48 {
+    @extend %base-style;
+    vertical-align: bottom;
+    border: none #000000;
+    background-color: #FFC000;
+  }
+
+  &.style49 {
+    @extend %base-style;
+    vertical-align: middle;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: none #000000;
+    border-left: $border-black !important;
+    border-right: $border-black !important;
+    background-color: #FFC000;
+  }
+
+  &.style50 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    text-decoration: line-through;
+    background-color: #FFFF00;
+  }
+
+  &.style51 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: left;
+    padding-left: 0px;
+    text-decoration: line-through;
+    background-color: #FFFFFF;
+  }
+
+  &.style52 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #D0DFE5;
+  }
+
+  &.style53 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: left;
+    padding-left: 0px;
+    background-color: #FFFFFF;
+  }
+
+  &.style54 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: bottom;
+    text-align: left;
+    padding-left: 0px;
+    background-color: #FFC000;
+  }
+
+  &.style55 {
+    @extend %base-style;
+    vertical-align: bottom;
+    text-align: center;
+    border-bottom: $border-black !important;
+    border-top: $border-black !important;
+    border-left: $border-black !important;
+    border-right: none #000000;
+    background-color: #FFFFFF;
+  }
+
+  &.style56 {
+    @extend %base-style;
+    @extend %base-borders;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #D0DFE5;
+  }
+
+  &.style57 {
+    @extend %base-style;
+    vertical-align: bottom;
+    text-align: left;
+    padding-left: 0px;
+    border-bottom: $border-black !important;
+    border-top: $border-black !important;
+    border-left: none #000000;
+    border-right: $border-black !important;
+    background-color: #FFFFFF;
+  }
+}

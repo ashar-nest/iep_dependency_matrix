@@ -1,0 +1,65 @@
+<main class="login-container">
+  <section class="login-section">
+    <header class="login-header">
+      <div class="logo-placeholder">
+        <img
+        src="assets/images/IEP-Logo-primary.svg"
+        alt="BH logo"
+        class="image-logo"
+      />
+      </div>
+      <h1>Sign In</h1>
+    </header>
+    
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form" autocomplete="off">
+      <div class="form-group">
+        <label for="username">Username <span class="required">*</span></label>
+        <input 
+          type="text"
+          id="username"
+          formControlName="username" 
+          placeholder="Enter your username" 
+          autocomplete="new-password" 
+          autocorrect="off"
+          autocapitalize="off"
+          required
+          [class.invalid]="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)"
+        />
+        <div class="error-message">
+             <span *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)">
+                <span *ngIf="loginForm.get('username')?.hasError('required')">Username is required</span>
+             </span>
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password <span class="required">*</span></label>
+        <input 
+          type="password"
+          id="password" 
+          formControlName="password" 
+          placeholder="Enter your password" 
+          autocomplete="new-password" 
+          required
+          [class.invalid]="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+        />
+        <div class="error-message">
+            <span *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                <span *ngIf="loginForm.get('password')?.hasError('required')">Password is required</span>
+            </span>
+        </div>
+      </div>
+      
+      <div class="form-actions">
+        <button type="submit" [disabled]="loginForm.invalid" class="login-button">
+          Login
+        </button>
+      </div>
+      <div class="auth-error-message">
+        <span *ngIf="errorMessage" >
+          {{ errorMessage }}
+        </span>
+      </div>
+    </form>
+  </section>
+</main>

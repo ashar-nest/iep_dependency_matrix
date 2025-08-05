@@ -1,0 +1,282 @@
+<main class="dashboard-container">
+  <app-header></app-header>
+  
+  <section class="matrix-section">
+    <!-- Statistics Summary -->
+    <div class="stats-container" *ngIf="stats">
+      <div class="stats-card">
+        <div class="stats-card-header">
+          <h2>IEP Dependency Matrix Summary</h2>
+          <button class="toggle-stats-btn" (click)="toggleStats()">
+            <span class="material-symbols-outlined" *ngIf="!statsCollapsed">
+              keyboard_arrow_down
+            </span>
+            <span class="material-symbols-outlined" *ngIf="statsCollapsed">
+              stat_1
+            </span>
+          </button>
+        </div>
+        <div class="stats-card-content" [ngClass]="{'collapsed': statsCollapsed}">
+          
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-value">{{stats.totalItems}}</div>
+              <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">{{getObjectKeys(stats.moduleBreakdown).length}}</div>
+              <div class="stat-label">Modules</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">{{getObjectKeys(stats.subModuleBreakdown).length}}</div>
+              <div class="stat-label">Sub Modules</div>
+            </div>
+          </div>
+          <div class="md-filt-section">
+            <div class="module-filters-container">
+              <div class="module-filter">
+                <label class="sp-label" for="moduleFilter">Module</label>
+                <div class="custom-dropdown-wrapper" #dropdownContainer>
+                  <div class="dropdown-header" (click)="toggleModuleDropdown($event)">
+                    <span class="dropdown-text">{{ selectedModuleFilter || 'All Modules' }}</span>
+                    <span class="dropdown-icon">
+                      <span class="material-symbols-outlined">
+                        {{ isModuleDropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+                      </span>
+                    </span>
+                  </div>
+                
+                  <div class="dropdown-menu" *ngIf="isModuleDropdownOpen" [style.display]="'block !important'">
+                    <div class="dropdown-item" (click)="selectModule('', $event)">
+                      All Modules
+                    </div>
+                    <div class="dropdown-item" *ngFor="let module of moduleFilterOptions" 
+                         (click)="selectModule(module, $event)"
+                         [class.active]="selectedModuleFilter === module">
+                      {{ module }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="module-filter">
+                <label class="sp-label" for="subModuleFilter">Sub Module</label>
+                <div class="sub-module-container">
+                  <div class="custom-dropdown-wrapper" #subModuleDropdownContainer>
+                    <div class="dropdown-header" (click)="toggleSubModuleDropdown($event)">
+                      <span class="dropdown-text">{{ selectedSubModuleFilter || 'All Sub Modules' }}</span>
+                      <span class="dropdown-icon">
+                        <span class="material-symbols-outlined">
+                          {{ isSubModuleDropdownOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+                        </span>
+                      </span>
+                    </div>
+                    <div class="dropdown-menu" *ngIf="isSubModuleDropdownOpen">
+                      <div class="dropdown-item" (click)="selectSubModule('', $event)">
+                        All Sub Modules
+                      </div>
+                      <div class="dropdown-item" *ngFor="let subModule of filteredSubModuleOptions" 
+                           (click)="selectSubModule(subModule, $event)"
+                           [class.active]="selectedSubModuleFilter === subModule">
+                        {{ subModule }}
+                      </div>
+                    </div>
+                  </div>
+                  <span class="summarize-icon material-symbols-outlined" (click)="openSummarizeDialog($event)">
+                    <img
+                    src="assets/icons/Summary.svg"
+                    alt="Summary"
+                    class="image-logo"
+                  />
+                  </span>
+                  <span class="module-icon" (click)="openModuleDetailsDialog($event)">
+                    <img
+                    src="assets/icons/module.svg"
+                    alt="Modules"
+                    class="image-logo"
+                  />
+                    </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrapper"> 
+      <div class="filters-container">
+        <div class="table-title">
+          <h2>IEP Dependency Matrix</h2>
+          <div class="input-wrapper-title">
+            <input 
+              #searchInput
+              type="text" 
+              id="search" 
+              (keyup)="applySearch($event)" 
+              placeholder="Search in all columns">
+            <span class="search-icon">
+              <span class="material-symbols-outlined">
+                search
+                </span>
+            </span>
+          </div>
+        </div>
+     <div class="table-title-right">
+        <button class="btn btn-outline" (click)="openMatrixDialog()" *ngIf="isAdmin">
+          <span class="icon">
+            <span class="material-symbols-outlined">
+              add
+              </span>
+          </span>
+        </button>
+        <button class="btn btn-outline" (click)="exportToExcel()">
+          <span class="icon">
+              <span class="material-symbols-outlined icon-microsoftexcel"></span>
+          </span>
+        </button>
+        <button class="btn btn-outline" 
+        (click)="clearAllFilters()" 
+        [disabled]="selectedModules.length === 0 && selectedSubModules.length === 0 && selectedFunctionalities.length === 0 && selectedDependencies.length === 0 && selectedApis.length === 0 && selectedSubTasks.length === 0">
+  <span class="icon">
+    <span class="material-symbols-outlined">
+      filter_alt_off
+      </span>
+  </span>
+</button>
+      </div>
+      </div>
+      
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th *ngFor="let column of displayedColumns" [class.sortable]="column.sortable" (click)="column.sortable && sortData(column.key)">
+                <div class="header-content">
+                  <div class="column-title">
+                    {{ column.title }}
+                    <div class="sort-indicator" *ngIf="column.sortable">
+                      <span class="sort-arrow" *ngIf="currentSortColumn === column.key">
+                        {{ sortDirection === 'asc' ? '↑' : '↓' }}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="column-filter">
+                    <button *ngIf="column.key !== 'actions'" 
+                            class="filter-button" 
+                            (click)="toggleFilterDropdown(column.key, $event)" 
+                            [class.active]="activeFilterDropdown === column.key">
+                      <span class="filter-icon" [class.filtered]="
+                        (column.key === 'module' && selectedModules.length > 0) ||
+                        (column.key === 'subModule' && selectedSubModules.length > 0) ||
+                        (column.key === 'functionality' && selectedFunctionalities.length > 0) ||
+                        (column.key === 'dependencyModule' && selectedSubTasks.length > 0) ||
+                        (column.key === 'dependantFunctionality' && selectedDependencies.length > 0) ||
+                        (column.key === 'api' && selectedApis.length > 0)
+                      ">
+                      <span class="material-symbols-outlined">
+                        more_vert
+                        </span>
+                      </span>
+                    </button>
+                    
+                    <div *ngIf="activeFilterDropdown === column.key" class="filter-dropdown" (click)="$event.stopPropagation()">
+                      <div class="filter-dropdown-content">
+                        
+                        
+                        <div class="filter-search" (click)="$event.stopPropagation()">
+                          <div class="input-wrapper">
+                            <input type="text" 
+                                  placeholder="Search..." 
+                                  (input)="filterOptions(column.key, $event)"
+                                  (click)="$event.stopPropagation()">
+                            <span class="search-icon">
+                              <span class="material-symbols-outlined">
+                                search
+                                </span>
+                            </span>
+                          </div>
+                        </div>
+                        
+                        <div class="filter-dropdown-header" (click)="$event.stopPropagation()">
+                          <label class="checkbox-container">
+                            <input type="checkbox" 
+                                  [checked]="areAllSelected(column.key)" 
+                                  (change)="handleCheckboxToggleAllTemp(column.key, $event)">
+                            <span class="checkmark"></span>
+                            <span>Select All</span>
+                          </label>
+                        </div>
+
+                        <div class="filter-options" (click)="$event.stopPropagation()">
+                          <div *ngFor="let option of getFilterOptions(column.key)" class="filter-option">
+                            <label class="checkbox-container">
+                              <input type="checkbox"
+                                    [checked]="isTempOptionSelected(column.key, option)"
+                                    (change)="handleFilterOptionChangeTemp(column.key, option, $event)">
+                              <span class="checkmark"></span>
+                              <span>{{ option }}</span>
+                            </label>
+                          </div>
+                        </div>
+                        
+                        <div class="filter-dropdown-footer" (click)="$event.stopPropagation()">
+                          <button class="btn btn-outline btn-sm mrg-zero" 
+                                  (click)="clearColumnFilterTemp(column.key); $event.stopPropagation()" 
+                                  [disabled]="!hasTempSelections(column.key)">Clear</button>
+                          <button class="btn btn-primary" (click)="applyColumnFilters(); $event.stopPropagation()">Apply</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of filteredItems">
+              <td>{{ item.module }}</td>
+              <td>{{ item.subModule }}</td>
+              <td>{{ item.functionality }}</td>
+              <td>{{ item.dependencyModule }}</td>
+              <td>{{ item.dependantFunctionality }}</td>
+              <td>{{ item.api }}</td>
+              <!-- Only show Actions column for admin users -->
+              <td *ngIf="isAdmin" class="lst-th">
+                <div class="action-buttons-cell">
+                  <button class="btn-icon" (click)="editItem(item)" title="Edit">
+                    <span class="material-symbols-outlined">
+                      edit
+                      </span>
+                  </button>
+                  <button class="btn-icon delete" (click)="deleteItem(item)" title="Delete">
+                    <span class="material-symbols-outlined">
+                      delete
+                      </span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+            <tr *ngIf="filteredItems.length === 0">
+              <td [attr.colspan]="isAdmin ? 7 : 6" class="no-data">
+                {{ searchTerm ? 'No data matching the filter "' + searchTerm + '"' : 'No data available' }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="pagination-container">
+        <div class="pagination-info">
+          Showing {{ filteredItems.length }} entries
+        </div>
+      </div>
+    </div>
+    
+    <div class="toast-message" *ngIf="message" [@fadeInOut]>
+      {{ message }}
+      <button class="close-btn" (click)="closeMessage()">&times;</button>
+    </div>
+  </section>
+</main>
