@@ -306,38 +306,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
       
       // Reset the filtered options for this column to show all available options initially
       this.resetFilteredOptionsForColumn(column);
-      
-      // Wait for DOM update to calculate position
-     /* setTimeout(() => {
-        // Get the filter dropdown element
-        const filterDropdown = document.querySelector('.filter-dropdown') as HTMLElement;
-        if (!filterDropdown) return;
-        
-        // Get the button that was clicked
-        const filterButton = event.currentTarget as HTMLElement;
-        const buttonRect = filterButton.getBoundingClientRect();
-        
-        // Get viewport dimensions
-        const viewportWidth = window.innerWidth;
-        
-        // Get the dropdown width
-        const dropdownWidth = filterDropdown.offsetWidth;
-        
-        // Calculate position
-        let leftPosition = -112; // Default left offset
-        
-        // Check if the dropdown would overflow the right side of the viewport
-        if (buttonRect.right + (dropdownWidth - buttonRect.width) > viewportWidth) {
-          // Position to the left of the button if it would overflow right
-          leftPosition = -dropdownWidth + 24; // 24px accounts for the button width
-        } else if (buttonRect.left < dropdownWidth / 2) {
-          // If near the left edge, align with the left side of the button
-          leftPosition = 0;
-        }
-        
-        // Apply the position
-        filterDropdown.style.left = `${leftPosition}px`;
-      }, 0);*/
     }
   }
   
@@ -399,17 +367,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     if (this.isModuleDropdownOpen) {
       this.isSubModuleDropdownOpen = false;
       
-      /*setTimeout(() => {
-        // Get the position of the clicked dropdown button
-        const dropdownElement = (event.currentTarget as HTMLElement);
-        const rect = dropdownElement.getBoundingClientRect();
-        
-        // Position the dropdown below the button
-        this.moduleDropdownPosition = {
-          top: `${rect.bottom + window.scrollY}px`,
-          left: `${rect.left + window.scrollX}px`
-        };
-      });*/
     }
   }
   
@@ -422,17 +379,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     if (this.isSubModuleDropdownOpen) {
       this.isModuleDropdownOpen = false;
       
-      /*setTimeout(() => {
-        // Get the position of the clicked dropdown button
-        const dropdownElement = (event.currentTarget as HTMLElement);
-        const rect = dropdownElement.getBoundingClientRect();
-        
-        // Position the dropdown below the button
-        this.subModuleDropdownPosition = {
-          top: `${rect.bottom + window.scrollY}px`,
-          left: `${rect.left + window.scrollX}px`
-        };
-      });*/
     }
   }
   
@@ -756,7 +702,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     }
     
     const dialogRef = this.dialogService.open(ConfirmDialogComponent, {
-      //width: '400px',
       data: {
         title: 'Confirm Deletion',
         message: `Are you sure you want to delete "${item.module}: ${item.subModule}"?`,
